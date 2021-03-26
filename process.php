@@ -20,7 +20,7 @@ if(isset($_POST['save'])) {
 
 if(isset($_GET['delete'])) {
     $id = $_GET['delete'];
-    $mysqli->query("DELETE FROM data WHERE $id=$id") or die($mysqli);
+    $mysqli->query("DELETE FROM data WHERE id=$id") or die($mysqli);
 
     $_SESSION['message'] = "Record has been deleted";
     $_SESSION['msg_type'] = "danger";
