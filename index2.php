@@ -1,3 +1,5 @@
+<!-- http://crud.lt -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +12,16 @@
 <body>
 <?php require_once 'process2.php'; ?>
 
+<?php if(isset($_SESSION['message'])): ?>
+
+<div class="alert alert-<?=$_SESSION['msg_type']?>">
+    <?php
+    echo $_SESSION['message'];
+    unset($_SESSION['message']);
+    ?>
+</div>
+
+<?php endif ?>
 <?php
 
 $host = '127.0.0.1';
@@ -49,7 +61,12 @@ $stmt = $pdo->query($sql);
                     <tr>
                         <td> <?php echo $row['Name']; ?> </td>
                         <td> <?php echo $row['Location']; ?> </td>
-                        <td></td>
+                        <td>
+                            <a href="index2.php?edit=<?php echo $row['Id']; ?>"
+                            class="btn btn-info">Edit</a>
+                            <a href="process2.php?delete=<?php echo $row['Id']; ?>"
+                            class="btn btn-danger">Delete</a>
+                        </td>
                     </tr>
                     <?php endwhile; ?>
             </table>
@@ -85,10 +102,10 @@ $stmt = $pdo->query($sql);
 2. Add divs and Bootstrap classes to the form to make it look good, center the form
 3.Create process.php, add it to form and include it from index.php
 4.Create MySql db 'myDBPDO' and table 'data' with id, name and location fields (rankiniu budu)
-5.connect to db
-6.loop of records
-7.
-8.
-9.
+5.connect to db and insert 'name' and 'location' to data table if save button has been pressed
+6.create loop to display
+7.add edit and delete
+8.delete record if button has been clicked
+9.create session message
 10.
 -->
