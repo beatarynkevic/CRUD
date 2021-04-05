@@ -74,22 +74,25 @@ $stmt = $pdo->query($sql);
         </div>
 
 
-
-
-
-
         <div class="row justify-content-center">
             <form action="process2.php" method="POST">
+            <input type="hidden" name="id" value="<?php echo $id; ?>">
+
                 <div class="form-group">
                     <label>Name</label>
-                    <input type="text" name="name" class="form-control">
+                    <input type="text" name="name" class="form-control" placeholder="Enter your name" value="<?php echo $name; ?>">
                 </div>
                 <div class="form-group">
                     <label>Location</label>
-                    <input type="text" name="location" class="form-control">
+                    <input type="text" name="location" class="form-control" placeholder="Enter your name" value="<?php echo $location; ?>">
                 </div>
                 <div class="form-group">
-                    <button type="submit" name="action" class="btn btn-primary" value="add">Save</button>
+                <?php
+                if($update == true): ?>
+                    <button type="submit" name="update" class="btn btn-info">Update</button>
+                    <?php else: ?>
+                    <button type="submit" name="action" class="btn btn-primary" value="add" >Save</button>
+                    <?php endif; ?>
                 </div>
             </form>
         </div>

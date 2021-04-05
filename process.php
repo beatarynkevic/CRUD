@@ -54,7 +54,4 @@ if (isset($_POST['update'])) {
 
     $_SESSION['message'] = "Record has been updated!";
     $_SESSION['msg_type'] = "warning";
-
-    header("location: index.php");
-    die;
 }
