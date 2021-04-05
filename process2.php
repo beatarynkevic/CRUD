@@ -1,19 +1,32 @@
 <?php
 
-$servername = "localhost";
-$username = "root";
-$password = "";
+$host = '127.0.0.1';
+$db   = 'myDBPDO';
+$user = 'root';
+$pass = '';
+$charset = 'utf8mb4';
 
+$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+$options = [
+    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+    PDO::ATTR_EMULATE_PREPARES   => false,
+];
 try {
-  $conn = new PDO("mysql:host=$servername", $username, $password);
-  // set the PDO error mode to exception
-  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-  $sql = "CREATE DATABASE myDBPDO";
-  // use exec() because no results are returned
-  $conn->exec($sql);
-  echo "Database created successfully<br>";
-} catch(PDOException $e) {
-  echo $sql . "<br>" . $e->getMessage();
+     $pdo = new PDO($dsn, $user, $pass, $options);
+} catch (\PDOException $e) {
+     throw new \PDOException($e->getMessage(), (int)$e->getCode());
 }
 
-$conn = null;
+if(!empty($_POST)) {
+
+    if('add' == $_POST['action']) {
+        $sql = "INSERT INTO data (name, location)
+        VALUES (?, ?)";
+        $stmt = $pdo->prepare($sql); //paruosimas
+        $stmt->execute([ $_POST['name'], $_POST['location'] ]);
+    }
+
+    header('Location: http://localhost/CRUD/index2.php');
+    die;
+}
