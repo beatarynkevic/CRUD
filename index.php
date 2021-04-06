@@ -10,7 +10,7 @@
     <title>CRUD 2</title>
 </head>
 <body>
-<?php require_once 'process2.php'; ?>
+<?php require_once 'process.php'; ?>
 
 <?php if(isset($_SESSION['message'])): ?>
 
@@ -64,7 +64,7 @@ $stmt = $pdo->query($sql);
                         <td>
                             <a href="index2.php?edit=<?php echo $row['Id']; ?>"
                             class="btn btn-info">Edit</a>
-                            <a href="process2.php?delete=<?php echo $row['Id']; ?>"
+                            <a href="process.php?delete=<?php echo $row['Id']; ?>"
                             class="btn btn-danger">Delete</a>
                         </td>
                     </tr>
@@ -75,7 +75,7 @@ $stmt = $pdo->query($sql);
 
 
         <div class="row justify-content-center">
-            <form action="process2.php" method="POST">
+            <form action="process.php" method="POST">
             <input type="hidden" name="id" value="<?php echo $id; ?>">
 
                 <div class="form-group">

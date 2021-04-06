@@ -28,7 +28,7 @@ try {
     //     $_SESSION['message'] = "Name and location is required";
     //     $_SESSION['msg_type'] = "warning";
 
-    //     header('Location: http://localhost/CRUD/index2.php');
+    //     header('Location: http://localhost/app/index.php');
     //     die;
     //  }
     // else{
@@ -47,7 +47,7 @@ try {
             $_SESSION['message'] = "Name and location is required";
             $_SESSION['msg_type'] = "warning";
     
-            header('Location: http://localhost/CRUD/index2.php');
+            header('Location: http://localhost/app/index.php');
             die;
         }
         $sql = "INSERT INTO data (name, location)
@@ -58,7 +58,7 @@ try {
         $_SESSION['message'] = "Record has been saved!";
         $_SESSION['msg_type'] = "success";
 
-        header('Location: http://localhost/CRUD/index2.php');
+        header('Location: http://localhost/app/index.php');
         die;
     }
 
@@ -72,7 +72,7 @@ if(isset($_GET['delete'])) {
     $_SESSION['message'] = "Record has been deleted!";
     $_SESSION['msg_type'] = "danger";
 
-    header('Location: http://localhost/CRUD/index2.php');
+    header('Location: http://localhost/app/index.php');
     die;
 }
 
@@ -99,6 +99,6 @@ if (isset($_POST['update'])) {
     $_SESSION['message'] = "Recors has been updated!";
     $_SESSION['msg_type'] = "warning";
 
-    header('Location: http://localhost/CRUD/index2.php');
+    header('Location: http://localhost/app/index.php');
     die;
 }
